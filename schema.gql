@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PersonEntity {
+  id: String!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  findAllPersons(queryParams: QueryParamsInput): [PersonEntity!]!
+  findOnePerson(personId: IdInput!): PersonEntity!
+}
+
+input QueryParamsInput {
+  page: Float = 1
+  pageSize: Float = 200
+}
+
+input IdInput {
+  id: String!
+}
+
+type Mutation {
+  createPerson(createPersonInput: CreatePersonInput!): PersonEntity!
+  updatePerson(updatePersonInput: UpdatePersonInput!): PersonEntity!
+  removePerson(personId: IdInput!): Boolean!
+}
+
+input CreatePersonInput {
+  name: String!
+}
+
+input UpdatePersonInput {
+  name: String
+  id: String!
+}
